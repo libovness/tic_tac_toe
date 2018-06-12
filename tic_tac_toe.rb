@@ -1,5 +1,5 @@
-require '../lib/board'
-require '../lib/player'
+require './lib/board'
+require './lib/player'
 require 'io/console'
 
 @board = Board.new
