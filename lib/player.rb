@@ -6,6 +6,7 @@ class Player
 		@player
 	end 
 
+	# Only accept words as player names
 	def name_is_valid?(name)
 		/\w/.match(name) ? true : false
 	end

@@ -6,6 +6,7 @@ class Board
 		@played_positions = Array.new
 	end
 
+	# Add a move to the board
 	def update(position,val)
 		case position 
 			when 1 then @board[0][0] = val
@@ -21,6 +22,7 @@ class Board
 		@move_count = @move_count + 1
 	end
 
+	# Display the current state of the board
 	def display
 		puts "\n"
 		(0..2).each do |row|
@@ -32,6 +34,7 @@ class Board
 		end
 	end
 
+	# Display the numbers that correspond to positions
 	def display_dummy
 		dummy_board = Array.new(3) {Array.new(3)}
 		puts "\n"
@@ -43,10 +46,12 @@ class Board
 		puts "\n"
 	end
 
+	# Start a new board
 	def reset
 		@board = Array.new(3) {Array.new(3," ")}
 	end
-		
+	
+	# Did someone win?	
 	def won?
 		@won = false
 				
@@ -70,6 +75,7 @@ class Board
 
 	end
 
+	# Did the players stalemate?
 	def over?
 		@over = true
 		(0..2).each do |row|
@@ -80,6 +86,7 @@ class Board
 		@over
 	end
 
+	# Did someone already move in that position?
 	def move_is_valid?(position)
 		if @played_positions.index(position)
 			result = false
