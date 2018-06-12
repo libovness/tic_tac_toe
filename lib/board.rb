@@ -80,7 +80,7 @@ class Board
 		@over
 	end
 
-	def is_valid?(position)
+	def move_is_valid?(position)
 		if @played_positions.index(position)
 			result = false
 		else 

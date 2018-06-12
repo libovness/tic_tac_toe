@@ -21,9 +21,9 @@ end
 def setup 
 	puts "Press any key to start"
 	continue_on
-	puts "Player 1, what is your name?"
 
 	# Create Player 1
+	puts "Player 1, what is your name?"
 	@p1.name = gets.chomp
 	@p1.char = 'X'
 	@p1.is_turn = true
@@ -54,7 +54,7 @@ end
 
 def play
 	move = gets.chomp.to_i
-	if @board.is_valid?(move)
+	if @board.move_is_valid?(move)
 		proceed_with(move)
 	else 
 		puts "That spot is taken. Try again."
@@ -75,7 +75,7 @@ def proceed_with(move)
 		puts "#{@current_player.name}, you get the first move in the new game."
 		play
 	elsif @board.over?
-		puts "The game had ended in a tie. Let's start over."
+		puts "The game has ended in a tie. Let's start over."
 		turn
 		puts "#{@current_player.name}, your move."
 		play
