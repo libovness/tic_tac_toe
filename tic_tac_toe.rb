@@ -7,17 +7,20 @@ require 'io/console'
 @p2 = Player.new
 @current_player = @p1
 
+# Press any key to continue
 def continue_on                                                                                                                                                                                                             
   STDIN.getch                                                                                                              
   print "            \r"
 end  
 
+# Take turns
 def turn
 	@p1.is_turn = !@p1.is_turn
 	@p2.is_turn = !@p2.is_turn
 	@current_player = @p1.is_turn ? @p1 : @p2
 end
 
+# Setup the game
 def setup 
 	puts "Press any key to start"
 	continue_on
@@ -42,6 +45,7 @@ def setup
 	play
 end
 
+# Interact with user if their username isn't valid
 def validate_name(player)
 	if player.name_is_valid?(player.name)
 		puts "Cool! #{player.name}, you'll be the #{player.char}"
@@ -52,6 +56,7 @@ def validate_name(player)
 	end
 end
 
+# Determine if position is taken. If not, play the move.
 def play
 	move = gets.chomp.to_i
 	if @board.move_is_valid?(move)
@@ -62,6 +67,7 @@ def play
 	end
 end
 
+# Determine if game has been won or stalemated. If neither, continue.
 def proceed_with(move)
 	@board.update(move,@current_player.char)
 	@board.display
@@ -86,6 +92,6 @@ def proceed_with(move)
 	end
 end
 
-
+# Start and play the game
 setup
 play
